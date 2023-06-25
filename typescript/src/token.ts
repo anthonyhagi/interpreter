@@ -29,6 +29,11 @@ export const TokenType = {
   // Keywords
   Function: 'FUNCTION',
   Let: 'LET',
+  True: 'TRUE',
+  False: 'FALSE',
+  If: 'IF',
+  Else: 'ELSE',
+  Return: 'RETURN',
 } as const;
 
 type TokenItem = (typeof TokenType)[keyof typeof TokenType];
@@ -41,6 +46,11 @@ export type Token = {
 const keywords: Record<string, TokenItem> = {
   fn: 'FUNCTION',
   let: 'LET',
+  true: 'TRUE',
+  false: 'FALSE',
+  if: 'IF',
+  else: 'ELSE',
+  return: 'RETURN',
 };
 
 export function lookupIdentifier(literal: string): Token['type'] {

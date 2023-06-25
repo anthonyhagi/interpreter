@@ -92,7 +92,12 @@ test('test getNextToken() for extended tokens and keywords)', () => {
     let result = add(five, ten);
     !-/*5;
     5 < 10 > 5;
-    `;
+    
+    if (5 < 10) {
+      return true;
+    } else {
+      return false;
+    }`;
 
   const tokens = [
     { type: TokenType.Let, literal: 'let' },
@@ -147,6 +152,24 @@ test('test getNextToken() for extended tokens and keywords)', () => {
     { type: TokenType.Gt, literal: '>' },
     { type: TokenType.Int, literal: '5' },
     { type: TokenType.Semicolon, literal: ';' },
+
+    { type: TokenType.If, literal: 'if' },
+    { type: TokenType.Lparen, literal: '(' },
+    { type: TokenType.Int, literal: '5' },
+    { type: TokenType.Lt, literal: '<' },
+    { type: TokenType.Int, literal: '10' },
+    { type: TokenType.Rparen, literal: ')' },
+    { type: TokenType.Lbrace, literal: '{' },
+    { type: TokenType.Return, literal: 'return' },
+    { type: TokenType.True, literal: 'true' },
+    { type: TokenType.Semicolon, literal: ';' },
+    { type: TokenType.Rbrace, literal: '}' },
+    { type: TokenType.Else, literal: 'else' },
+    { type: TokenType.Lbrace, literal: '{' },
+    { type: TokenType.Return, literal: 'return' },
+    { type: TokenType.False, literal: 'false' },
+    { type: TokenType.Semicolon, literal: ';' },
+    { type: TokenType.Rbrace, literal: '}' },
   ] satisfies Token[];
 
   const lexer = new Tokeniser(input);

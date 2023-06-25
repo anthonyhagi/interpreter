@@ -43,12 +43,15 @@ export class Tokeniser {
         } else {
           token = this.newToken(TokenType.Assign, currentChar);
         }
+
         break;
       case '+':
         token = this.newToken(TokenType.Plus, currentChar);
+
         break;
       case '-':
         token = this.newToken(TokenType.Minus, currentChar);
+
         break;
       case '!':
         if (this.peekChar() === '=') {
@@ -58,36 +61,47 @@ export class Tokeniser {
         } else {
           token = this.newToken(TokenType.Bang, currentChar);
         }
+
         break;
       case '/':
         token = this.newToken(TokenType.Slash, currentChar);
+
         break;
       case '*':
         token = this.newToken(TokenType.Asterisk, currentChar);
+
         break;
       case '<':
         token = this.newToken(TokenType.Lt, currentChar);
+
         break;
       case '>':
         token = this.newToken(TokenType.Gt, currentChar);
+
         break;
       case '(':
         token = this.newToken(TokenType.Lparen, currentChar);
+
         break;
       case ')':
         token = this.newToken(TokenType.Rparen, currentChar);
+
         break;
       case '{':
         token = this.newToken(TokenType.Lbrace, currentChar);
+
         break;
       case '}':
         token = this.newToken(TokenType.Rbrace, currentChar);
+
         break;
       case ',':
         token = this.newToken(TokenType.Comma, currentChar);
+
         break;
       case ';':
         token = this.newToken(TokenType.Semicolon, currentChar);
+
         break;
     }
 
@@ -173,6 +187,12 @@ export class Tokeniser {
     this.readPosition += 1;
   }
 
+  /**
+   * Check the next character after the current without incrementing any
+   * positions.
+   *
+   * @returns The next character in the input string.
+   */
   private peekChar(): string {
     if (this.readPosition >= this.input.length) {
       return '\0';

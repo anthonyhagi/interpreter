@@ -17,6 +17,9 @@ export const TokenType = {
   Lt: '<',
   Gt: '>',
 
+  Eq: '==',
+  NotEq: '!=',
+
   // Delimeters
   Comma: ',',
   Semicolon: ';',

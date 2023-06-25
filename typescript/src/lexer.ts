@@ -36,7 +36,13 @@ export class Tokeniser {
 
     switch (currentChar) {
       case '=':
-        token = this.newToken(TokenType.Assign, currentChar);
+        if (this.peekChar() === '=') {
+          this.readChar();
+
+          token = this.newToken(TokenType.Eq, currentChar + this.char);
+        } else {
+          token = this.newToken(TokenType.Assign, currentChar);
+        }
         break;
       case '+':
         token = this.newToken(TokenType.Plus, currentChar);
@@ -45,7 +51,13 @@ export class Tokeniser {
         token = this.newToken(TokenType.Minus, currentChar);
         break;
       case '!':
-        token = this.newToken(TokenType.Bang, currentChar);
+        if (this.peekChar() === '=') {
+          this.readChar();
+
+          token = this.newToken(TokenType.NotEq, currentChar + this.char);
+        } else {
+          token = this.newToken(TokenType.Bang, currentChar);
+        }
         break;
       case '/':
         token = this.newToken(TokenType.Slash, currentChar);
@@ -159,6 +171,14 @@ export class Tokeniser {
 
     this.position = this.readPosition;
     this.readPosition += 1;
+  }
+
+  private peekChar(): string {
+    if (this.readPosition >= this.input.length) {
+      return '\0';
+    }
+
+    return this.input[this.readPosition] ?? '\0';
   }
 
   /**

@@ -9,6 +9,13 @@ export const TokenType = {
   // Operators
   Assign: '=',
   Plus: '+',
+  Minus: '-',
+  Bang: '!',
+  Asterisk: '*',
+  Slash: '/',
+
+  Lt: '<',
+  Gt: '>',
 
   // Delimeters
   Comma: ',',

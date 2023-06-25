@@ -41,6 +41,24 @@ export class Tokeniser {
       case '+':
         token = this.newToken(TokenType.Plus, currentChar);
         break;
+      case '-':
+        token = this.newToken(TokenType.Minus, currentChar);
+        break;
+      case '!':
+        token = this.newToken(TokenType.Bang, currentChar);
+        break;
+      case '/':
+        token = this.newToken(TokenType.Slash, currentChar);
+        break;
+      case '*':
+        token = this.newToken(TokenType.Asterisk, currentChar);
+        break;
+      case '<':
+        token = this.newToken(TokenType.Lt, currentChar);
+        break;
+      case '>':
+        token = this.newToken(TokenType.Gt, currentChar);
+        break;
       case '(':
         token = this.newToken(TokenType.Lparen, currentChar);
         break;

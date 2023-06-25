@@ -8,14 +8,14 @@
 
     // Module Resolution
     // The base directory for non-absolute module names.
-    "baseUrl": "src/",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "node",
 
     // Re-map imports for common locations
     "paths": {
-      "~/*": "src/*"
+      "~/*": ["src/*"]
     },
 
     // Source Map
@@ -34,6 +34,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src/", "tests/"],
+  "include": ["src/"],
   "exclude": ["node_modules/"]
 }

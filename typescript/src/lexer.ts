@@ -12,7 +12,6 @@ const _0 = '0'.charCodeAt(0);
 const _9 = '9'.charCodeAt(0);
 
 export class Tokeniser {
-  // @ts-ignore
   private position: number = 0;
 
   private readPosition: number = 0;

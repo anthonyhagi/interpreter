@@ -8,4 +8,7 @@ module.exports = {
     node: true,
     jest: true,
   },
+  globals: {
+    NodeJS: true,
+  },
 };

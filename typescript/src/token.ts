@@ -30,3 +30,12 @@ export type Token = {
   type: TokenItem;
   literal: string;
 };
+
+const keywords: Record<string, TokenItem> = {
+  fn: 'FUNCTION',
+  let: 'LET',
+};
+
+export function lookupIdentifier(literal: string): Token['type'] {
+  return keywords[literal] ?? TokenType.Ident;
+}

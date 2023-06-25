@@ -77,6 +77,6 @@ test('test getNextToken() complete', () => {
   const lexer = new Tokeniser(input);
 
   for (const token of tokens) {
-    expect(lexer.getNextToken()).toBe(token);
+    expect(lexer.getNextToken()).toStrictEqual(token);
   }
 });

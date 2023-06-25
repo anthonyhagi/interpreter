@@ -3,13 +3,20 @@ import { Token, TokenType } from '~/token';
 export class Tokeniser {
   // @ts-ignore
   private position: number = 0;
+
   private readPosition: number = 0;
+
   private char!: string;
 
   constructor(private input: string) {
     this.readChar();
   }
 
+  /**
+   * Get the next token from the input string.
+   *
+   * @returns The parsed Token from the input string.
+   */
   public getNextToken(): Token {
     let token: Token;
     const currentChar = this.char;
@@ -48,14 +55,27 @@ export class Tokeniser {
     return token;
   }
 
+  /**
+   * Helper function to create a new token from the specified type and
+   * associated character.
+   *
+   * @param tokenType The type of token to create.
+   * @param ch The literal character found for this token type.
+   *
+   * @returns The newly created token.
+   */
   private newToken(tokenType: Token['type'], ch: string): Token {
     return { type: tokenType, literal: ch };
   }
 
+  /**
+   * Read the next character from the input string so that it's ready
+   * to be tokenised.
+   */
   private readChar(): void {
-    if (this.readPosition >= this.input.length) {
-      this.char = '';
-    } else {
+    this.char = '\0';
+
+    if (this.readPosition < this.input.length) {
       const char = this.input[this.readPosition];
 
       if (char !== undefined) this.char = char;

@@ -1,11 +1,36 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
+    // Project Options
+    "lib": ["es2015", "dom"],
+    "outDir": "dist",
+    "removeComments": true,
     "target": "es6",
+
+    // Module Resolution
+    // The base directory for non-absolute module names.
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "module": "commonjs",
     "moduleResolution": "node",
+    // Re-map imports for common locations
+    "paths": {},
+
+    // Source Map
     "sourceMap": true,
-    "outDir": "dist"
+    "sourceRoot": "/",
+
+    // Strict Checks
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+
+    // Linter Checks
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "lib": ["es2015"]
+  "include": ["src/"],
+  "exclude": ["node_modules/"]
 }

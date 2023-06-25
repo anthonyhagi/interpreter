@@ -8,6 +8,9 @@ const Z = 'Z'.charCodeAt(0);
 
 const _ = '_'.charCodeAt(0);
 
+const _0 = '0'.charCodeAt(0);
+const _9 = '9'.charCodeAt(0);
+
 export class Tokeniser {
   // @ts-ignore
   private position: number = 0;
@@ -89,6 +92,12 @@ export class Tokeniser {
     return { type: tokenType, literal: ch };
   }
 
+  /**
+   * Continue reading the letters to form a string before finding an invalid
+   * character.
+   *
+   * @returns The complete identifier.
+   */
   private readIdentifier(): string {
     const position = this.position;
 
@@ -99,6 +108,12 @@ export class Tokeniser {
     return this.input.slice(position, this.position);
   }
 
+  /**
+   * Read all digits that are adjacent to each other before finding an invalid
+   * character.
+   *
+   * @returns The complete integer.
+   */
   private readNumber(): string {
     const position = this.position;
 
@@ -116,6 +131,8 @@ export class Tokeniser {
   private readChar(): void {
     this.char = '\0';
 
+    // Make sure that the position we are reading from is within the limits of
+    // the input file and that the character is valid.
     if (this.readPosition < this.input.length) {
       const char = this.input[this.readPosition];
 
@@ -149,12 +166,23 @@ export class Tokeniser {
     return (code >= a && code <= z) || (code >= A && code <= Z) || code === _;
   }
 
+  /**
+   * Check that the character is a valid digit based on it's ASCII
+   * representation.
+   *
+   * @returns `true` if the character is a digit.
+   */
   private isDigit(ch: string): boolean {
     const code = ch.charCodeAt(0);
 
-    return code >= 48 && code <= 57;
+    // Match the character against the ASCII code for the digit being checked.
+    return code >= _0 && code <= _9;
   }
 
+  /**
+   * For all of the whitespace or new line characters defined in the input
+   * string, skip them.
+   */
   private skipWhitespace(): void {
     while (
       this.char === ' ' ||

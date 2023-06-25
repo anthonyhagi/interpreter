@@ -1,4 +1,4 @@
-import { Lexer } from '~/lexer';
+import { Tokeniser } from '~/lexer';
 import { TokenType } from '~/token';
 
 test('test getNextToken()', () => {
@@ -15,7 +15,7 @@ test('test getNextToken()', () => {
     TokenType.Semicolon,
   ];
 
-  const lexer = new Lexer(input);
+  const lexer = new Tokeniser(input);
 
   for (const token of tokens) {
     expect(lexer.getNextToken().type).toBe(token);

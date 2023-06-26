@@ -1,4 +1,4 @@
-import { Token, TokenType, lookupIdentifier } from '~/token';
+import { Token, TokenType, lookupIdentifier } from './token';
 
 const a = 'a'.charCodeAt(0);
 const z = 'z'.charCodeAt(0);
@@ -100,6 +100,10 @@ export class Tokeniser {
         break;
       case ';':
         token = this.newToken(TokenType.Semicolon, currentChar);
+
+        break;
+      case '\0':
+        token = this.newToken(TokenType.Eof, '');
 
         break;
     }

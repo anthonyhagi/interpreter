@@ -32,5 +32,3 @@ export async function Start(
     }
   }
 }
-
-Start(process.stdin, process.stdout);

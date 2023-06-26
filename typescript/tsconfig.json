@@ -34,6 +34,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
   "include": ["src/"],
   "exclude": ["node_modules/"]
 }
